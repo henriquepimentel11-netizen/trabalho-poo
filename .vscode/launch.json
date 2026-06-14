@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Main (Sistemax)",
+      "request": "launch",
+      "mainClass": "Main",
+      "cwd": "${workspaceFolder}/Sistemax",
+      "classPaths": [
+        "${workspaceFolder}/Sistemax/src",
+        "${workspaceFolder}/Sistemax/postgresql-42.2.5.jar"
+      ]
+    }
+  ]
+}
