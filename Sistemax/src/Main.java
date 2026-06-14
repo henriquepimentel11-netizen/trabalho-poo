@@ -1,39 +1,21 @@
 import connection.ConnectionFactory;
-import database.dao.ClienteDAO;
-import database.model.Cliente;
+import database.dao.MissaoDao;
+import database.dao.NinjaDao;
+import database.model.Missao;
+import database.model.Ninja;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
-        Connection conexao = ConnectionFactory.getConnection
-                (
-                    "localhost",
-                    "5432",
-                    "sistemax",
-                    "postgres",
-                    "admin"
-                );
-        if (conexao != null) {
-            System.out.println("CONECTADO COM SUCESSO!");
+        Connection con = ConnectionFactory.conectar();
 
-            //Cliente cliente = new Cliente();
-            //cliente.setNome("Vanessa Rocha Alexandre");
-            //cliente.setCpf("9999999999");
-
-            ClienteDAO dao = new ClienteDAO(conexao);
-            //if (dao.insert(cliente)) {
-            //    System.out.println("FEZ INSERT!!!");
-            //} else {
-            //    System.out.println("DEU ERRO DEMAIS!");
-            //}
-            dao.update("123.456.789", 2);
-
+        if(con != null) {
+            System.out.println("Conectado com sucesso!");
         } else {
-            System.out.println("DEU RUIM!");
+            System.out.println("Erro na conexão!");
         }
-
     }
 }
