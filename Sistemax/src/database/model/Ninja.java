@@ -9,6 +9,21 @@ public class Ninja {
     private String naturezaChakra;
     private String status;
 
+    public Ninja() {
+    }
+
+    public Ninja(int id, String nome, String vila, String cla,
+                 String rankNinja, String naturezaChakra,
+                 String status) {
+
+        this.id = id;
+        this.nome = nome;
+        this.vila = vila;
+        this.cla = cla;
+        this.rankNinja = rankNinja;
+        this.naturezaChakra = naturezaChakra;
+        this.status = status;
+    }
 
     public int getId() {
         return id;

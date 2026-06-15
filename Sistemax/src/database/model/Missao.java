@@ -8,6 +8,19 @@ public class Missao {
     private String vila_origem;
     private String status;
 
+
+    public Missao(int id, String titulo, String descricao,
+                  String rank_missao, String vila_origem,
+                  String status) {
+
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.rank_missao = rank_missao;
+        this.vila_origem = vila_origem;
+        this.status = status;
+    }
+
     public int getId() {
         return id;
     }
