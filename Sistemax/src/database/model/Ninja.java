@@ -1,6 +1,6 @@
 package database.model;
 
-public class Ninja {
+public class Ninja{
     private int id;
     private String nome;
     private String vila;
