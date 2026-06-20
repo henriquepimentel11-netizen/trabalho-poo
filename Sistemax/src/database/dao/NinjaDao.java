@@ -2,7 +2,7 @@ package database.dao;
 
 import connection.ConnectionFactory;
 import java.sql.Connection;
-import model.Ninja;
+import database.model.Ninja;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,7 +50,7 @@ public class NinjaDao {
         pstUpdate.setString(3, ninja.getRankNinja());
         pstUpdate.setString(4, ninja.getNaturezaChakra());
         pstUpdate.setString(5, ninja.getStatus());
-        pstUpdate.setLong(6, ninja.getId());
+        pstUpdate.setInt(6, ninja.getId());
         pstUpdate.execute();
         return pstUpdate.getUpdateCount() > 0;
     }
@@ -62,7 +62,7 @@ public class NinjaDao {
         if (resultado != null) {
             while (resultado.next()) {
                 Ninja n = new Ninja();
-                n.setId(resultado.getLong(1));
+                n.setId(resultado.getInt(1));
                 n.setNome(resultado.getString(2));
                 n.setVila(resultado.getString(3));
                 n.setCla(resultado.getString(4));
