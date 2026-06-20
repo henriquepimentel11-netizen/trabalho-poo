@@ -1,6 +1,6 @@
 package database.dao;
 
-import connection.ConnectionFactory;
+
 import java.sql.Connection;
 import database.model.Ninja;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ public class NinjaDao {
     "DELETE FROM tb_ninja WHERE id = ?";
 
     private String update =
-    "UPDATE tb_ninja SET vila = ?, cla = ?, rank_ninja = ?, natureza_chakra = ?, status = ? WHERE id = ?";
+    "UPDATE tb_ninja SET nome = ?, vila = ?, cla = ?, rank_ninja = ?, natureza_chakra = ?, status = ? WHERE id = ?";
 
     private String selectAll =
     "SELECT * FROM tb_ninja";
@@ -45,12 +45,13 @@ public class NinjaDao {
     }
 
     public boolean update(Ninja ninja) throws SQLException {
-        pstUpdate.setString(1, ninja.getVila());
-        pstUpdate.setString(2, ninja.getCla());
-        pstUpdate.setString(3, ninja.getRankNinja());
-        pstUpdate.setString(4, ninja.getNaturezaChakra());
-        pstUpdate.setString(5, ninja.getStatus());
-        pstUpdate.setInt(6, ninja.getId());
+        pstUpdate.setString(1, ninja.getNome());
+        pstUpdate.setString(2, ninja.getVila());
+        pstUpdate.setString(3, ninja.getCla());
+        pstUpdate.setString(4, ninja.getRankNinja());
+        pstUpdate.setString(5, ninja.getNaturezaChakra());
+        pstUpdate.setString(6, ninja.getStatus());
+        pstUpdate.setInt(7, ninja.getId());
         pstUpdate.execute();
         return pstUpdate.getUpdateCount() > 0;
     }
@@ -62,17 +63,23 @@ public class NinjaDao {
         if (resultado != null) {
             while (resultado.next()) {
                 Ninja n = new Ninja();
-                n.setId(resultado.getInt(1));
-                n.setNome(resultado.getString(2));
-                n.setVila(resultado.getString(3));
-                n.setCla(resultado.getString(4));
-                n.setRankNinja(resultado.getString(5));
-                n.setNaturezaChakra(resultado.getString(6));
-                n.setStatus(resultado.getString(7));
+                n.setId(resultado.getInt("id"));
+                n.setNome(resultado.getString("nome"));
+                n.setVila(resultado.getString("vila"));
+                n.setCla(resultado.getString("cla"));
+                n.setRankNinja(resultado.getString("rank_ninja"));
+                n.setNaturezaChakra(resultado.getString("natureza_chakra"));
+                n.setStatus(resultado.getString("status"));
                 listaLocal.add(n);
             }
         }
         return listaLocal;
+    }
+
+    public boolean delete(int id) throws SQLException {
+        pstDelete.setInt(1, id);
+        pstDelete.execute();
+        return pstDelete.getUpdateCount() > 0;
     }
 
 }

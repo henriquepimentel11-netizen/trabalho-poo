@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 public class MissaoDao {
     private String insert =
-    "INSERT INTO tb_missao(titulo, descricao, dificuldade, prazo) VALUES(?, ?, ?, ?)";
+    "INSERT INTO tb_missao(titulo, descricao, rank_missao, vila_origem, status) VALUES(?, ?, ?, ?, ?)";
 
     private String delete =
     "DELETE FROM tb_missao WHERE id = ?";
 
     private String update =
-    "UPDATE tb_missao SET titulo = ?, descricao = ?, dificuldade = ?, prazo = ? WHERE id = ?";
+    "UPDATE tb_missao " + "SET titulo = ?, descricao = ?, rank_missao = ?, " + "vila_origem = ?, status = ? " + "WHERE id = ?";
 
     private String selectAll =
     "SELECT * FROM tb_missao";
@@ -59,15 +59,21 @@ public class MissaoDao {
         if (resultado != null) {
             while (resultado.next()) {
                 Missao m = new Missao();
-                m.setId(resultado.getInt(1));
-                m.setTitulo(resultado.getString(2));
-                m.setDescricao(resultado.getString(3));
-                m.setRank_missao(resultado.getString(4));
-                m.setVila_origem(resultado.getString(5));
-                m.setStatus(resultado.getString(6));
+                m.setId(resultado.getInt("id"));
+                m.setTitulo(resultado.getString("titulo"));
+                m.setDescricao(resultado.getString("descricao"));
+                m.setRank_missao(resultado.getString("rank_missao"));
+                m.setVila_origem(resultado.getString("vila_origem"));
+                m.setStatus(resultado.getString("status"));
                 listaLocal.add(m);
             }
         }
         return listaLocal;
+    }
+
+    public boolean delete(int id) throws SQLException {
+        pstDelete.setInt(1, id);
+        pstDelete.execute();
+        return pstDelete.getUpdateCount() > 0;
     }
 }
