@@ -10,6 +10,9 @@ public class NinjaMissao {
     private Date data_participacao;
 
 
+    public NinjaMissao() {
+    }
+
     public NinjaMissao(int id, int id_ninja, int id_missao,
                        String funcao, Date data_participacao) {
 

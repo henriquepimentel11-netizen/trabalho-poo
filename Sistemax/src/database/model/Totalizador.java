@@ -8,6 +8,9 @@ public class Totalizador {
     private int quantidade;
     private Timestamp datageracao;
 
+    public Totalizador() {
+    }
+
     public Totalizador(int id,
                         String descricao,
                         int quantidade,

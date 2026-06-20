@@ -9,6 +9,9 @@ public class Missao {
     private String status;
 
 
+    public Missao() {
+    }
+
     public Missao(int id, String titulo, String descricao,
                   String rank_missao, String vila_origem,
                   String status) {
