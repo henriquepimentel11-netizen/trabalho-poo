@@ -2,16 +2,16 @@ package database.model;
 
 import java.sql.Timestamp;
 
-public class Totalizador {
+public class TotalizadorNinja {
     private int id;
     private String descricao;
     private int quantidade;
     private Timestamp datageracao;
 
-    public Totalizador() {
+    public TotalizadorNinja() {
     }
 
-    public Totalizador(int id,
+    public TotalizadorNinja(int id,
                         String descricao,
                         int quantidade,
                         Timestamp datageracao) {
